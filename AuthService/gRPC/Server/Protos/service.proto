@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "AuthService.gRPC.Server.Protos";
+
+service Auth {
+
+}
+
+message Credential {
+
+}

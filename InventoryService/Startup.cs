@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AuthService.gRPC.Server.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace AuthService
+namespace InventoryService
 {
     public class Startup
     {
@@ -32,7 +31,7 @@ namespace AuthService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<AuthServiceImplementation>();
+                endpoints.MapGrpcService<GreeterService>();
 
                 endpoints.MapGet("/", async context =>
                 {

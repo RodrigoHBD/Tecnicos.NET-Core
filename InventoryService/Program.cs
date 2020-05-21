@@ -5,25 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using UserService.App.Initializer;
 
-namespace AuthService
+namespace InventoryService
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            try
-            {
-                AppInitializer.Initialize().Wait();
-                CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"FATAL ERROR: {e.Message} ");
-                Console.WriteLine($"ERROR STACK TRACE: {e.StackTrace} ");
-                Environment.Exit(1);
-            }
+            CreateHostBuilder(args).Build().Run();
         }
 
         // Additional configuration is required to successfully run gRPC on macOS.

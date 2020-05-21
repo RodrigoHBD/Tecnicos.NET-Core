@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{A087BF95-B40D-4A59-88A5-794C5899DA8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService", "InventoryService\InventoryService.csproj", "{1ACB7FE1-2B6F-40BA-B393-B53E034376C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A087BF95-B40D-4A59-88A5-794C5899DA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A087BF95-B40D-4A59-88A5-794C5899DA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A087BF95-B40D-4A59-88A5-794C5899DA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACB7FE1-2B6F-40BA-B393-B53E034376C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACB7FE1-2B6F-40BA-B393-B53E034376C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACB7FE1-2B6F-40BA-B393-B53E034376C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACB7FE1-2B6F-40BA-B393-B53E034376C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

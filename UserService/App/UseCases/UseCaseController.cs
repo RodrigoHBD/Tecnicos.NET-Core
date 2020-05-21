@@ -65,5 +65,19 @@ namespace UserService.App.UseCases
 				throw e;
 			}
 		}
+
+		public static async Task DeleteUser(string user)
+		{
+			try
+			{
+				await ValidateUsername.Execute(user);
+				await DeleteUser_.Execute(user);
+				return;
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
 	}
 }

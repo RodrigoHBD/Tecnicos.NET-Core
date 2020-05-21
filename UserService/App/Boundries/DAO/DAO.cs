@@ -53,6 +53,20 @@ namespace UserService.App.Boundries
             }
         }
 
+        public static async Task DeleteUser(string user)
+        {
+            try
+            {
+                
+
+                return;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public static async Task UpdateUserData(UserUpdate update)
         {
             try

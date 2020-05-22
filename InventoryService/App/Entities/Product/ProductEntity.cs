@@ -26,6 +26,7 @@ namespace InventoryService.App.Entities
             try
             {
                 await ProductUser.Validate(product.Seller);
+                ProductName.Validate(product.Name);
                 return;
             }
             catch (Exception e)

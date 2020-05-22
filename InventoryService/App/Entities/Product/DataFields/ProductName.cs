@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace InventoryService.App.Entities.Product.DataFields
+namespace InventoryService.App.Entities.ProductDataFields
 {
     public class ProductName
     {
 		private static Regex Regex { get; } = new Regex(@"/[^0-9A-z]/g");
-        public static void Execute(string name)
+        public static void Validate(string name)
         {
 			try
 			{
@@ -18,12 +18,13 @@ namespace InventoryService.App.Entities.Product.DataFields
 
 				if (hasSpecialCharacters)
 				{
-					throw new Exception("");
+					throw new Exception("Nome não pode conter caracteres especiais");
 				}
 				if (isTooShort)
 				{
-					throw new Exception("");
+					throw new Exception("Nome muito curto, minimo 5 caracteres");
 				}
+				return;
 			}
 			catch (Exception e)
 			{

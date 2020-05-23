@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "InventoryService.gRPC.Client.Protos";
+
+service User {
+	rpc CreateUser (GrpcCreateUserRequest) returns (GrpcStatusResponse);
+	rpc SignIn (GrpcSignInRequest) returns (GrpcStatusResponse);
+	rpc UpdateUserData (GrpcUserUpdateRequest) returns (GrpcStatusResponse);
+	rpc ValidateUsernameBool (GrpcValidateUsernameRequest) returns (GrpcBooleanResponse);
+}
+
+message GrpcStatusResponse {
+	bool ok = 1;
+}
+
+message GrpcBooleanResponse {
+	bool boolean = 1;
+}
+
+message GrpcCreateUserRequest {
+	string user = 1;
+	string password = 2;
+	string cpf = 3;
+	string name = 4;
+	string lastName = 5;
+}
+
+message GrpcSignInRequest {
+	string user = 1;
+	string password = 2;
+}
+
+message GrpcUserUpdateRequest {
+	string user = 1;
+	string password = 2;
+}
+
+message GrpcValidateUsernameRequest {
+	string user = 1;
+}

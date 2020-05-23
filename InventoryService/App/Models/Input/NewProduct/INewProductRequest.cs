@@ -7,14 +7,10 @@ namespace InventoryService.App.Models.Input
 {
     public interface INewProductRequest
     {
-        string Name { get; }
-
-        string Description { get; }
-
-        float Price { get; }
-
         string Seller { get; }
-
+        string Name { get; }
+        string Description { get; }
+        float Price { get; }
         List<string> PicturesUris { get; }
     }
 }

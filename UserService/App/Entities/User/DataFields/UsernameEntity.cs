@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UserService.App.Boundries;
+using UserService.App.CustomExceptions;
 
 namespace UserService.App.Entities.UserDataFields
 {
@@ -21,15 +22,15 @@ namespace UserService.App.Entities.UserDataFields
 
                 if (isTooShort)
                 {
-                    throw new Exception($"username deve ter no pelo menos 5 caracteres");
+                    throw new ValidationException("username", "Deve conter 5 caracteres no minimo");
                 }
                 if (hasSpecialCharacters)
                 {
-                    throw new Exception($"username não deve conter caracteres especiais");
+                    throw new ValidationException("username", "Nao pode conter caracteres especiais");
                 }
                 if (usernameIsTaken)
                 {
-                    throw new Exception($"username '{user}' já está em uso, escolha outro");
+                    throw new ValidationException("username", "Esse nome de usuario ja esta em uso, escolha outro.");
                 }
                 return;
             }
@@ -49,15 +50,15 @@ namespace UserService.App.Entities.UserDataFields
 
                 if (isTooShort)
                 {
-                    throw new Exception($"username deve ter no pelo menos 5 caracteres");
+                    throw new ValidationException("username", "Deve conter 5 caracteres no minimo");
                 }
                 if (hasSpecialCharacters)
                 {
-                    throw new Exception($"username não deve conter caracteres especiais");
+                    throw new ValidationException("username", "Nao pode conter caracteres especiais");
                 }
                 if (!usernameExist)
                 {
-                    throw new Exception($"Nome de usuario inexistente");
+                    throw new ValidationException("username", "Esse nome de usuario nao existe");
                 }
                 return;
             }

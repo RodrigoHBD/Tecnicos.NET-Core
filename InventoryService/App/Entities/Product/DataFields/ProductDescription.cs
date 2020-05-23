@@ -11,7 +11,7 @@ namespace InventoryService.App.Entities.ProductDataFields
         {
 			try
 			{
-
+				return;
 			}
 			catch (Exception e)
 			{

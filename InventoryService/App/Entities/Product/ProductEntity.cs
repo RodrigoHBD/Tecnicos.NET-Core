@@ -14,6 +14,7 @@ namespace InventoryService.App.Entities
             try
             {
                 await ValidateDataFields(product);
+                return;
             }
             catch (Exception e)
             {
@@ -25,8 +26,9 @@ namespace InventoryService.App.Entities
         {
             try
             {
-                await ProductUser.Validate(product.Seller);
+                await ProductSeller.Validate(product.Seller);
                 ProductName.Validate(product.Name);
+                ProductPrice.Validate(product.Price);
                 return;
             }
             catch (Exception e)

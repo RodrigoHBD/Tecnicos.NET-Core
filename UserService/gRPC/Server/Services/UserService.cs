@@ -6,6 +6,7 @@ using Grpc.Core;
 using UserService.gRPC.Server.Protos;
 using UserService.App.Controllers;
 using Microsoft.AspNetCore.Http.Headers;
+using UserService.App.CustomExceptions;
 
 namespace UserService.gRPC.Server
 {
@@ -16,6 +17,10 @@ namespace UserService.gRPC.Server
             try
             {
                 return await Controller.CreateUser(request);
+            }
+            catch (CustomException customException) 
+            {
+                throw HandleCustomException(customException);
             }
             catch (Exception e)
             {
@@ -30,6 +35,10 @@ namespace UserService.gRPC.Server
             {
                 return await Controller.SignIn(request);
             }
+            catch (CustomException customException)
+            {
+                throw HandleCustomException(customException);
+            }
             catch (Exception e)
             {
                 throw HandleError(e, call);
@@ -42,9 +51,43 @@ namespace UserService.gRPC.Server
             {
                 return await Controller.UpdateUserData(request);
             }
+            catch (CustomException customException)
+            {
+                throw HandleCustomException(customException);
+            }
             catch (Exception e)
             {
                 throw HandleError(e, call);
+            }
+        }
+
+        public override async Task<GrpcBooleanResponse> ValidateUsernameBool(GrpcValidateUsernameRequest request, ServerCallContext call)
+        {
+            try
+            {
+                return await Controller.ValidateUsernameBool(request);
+            }
+            catch(CustomException customException)
+            {
+                throw HandleCustomException(customException);
+            }
+            catch (Exception e)
+            {
+                throw HandleError(e, call);
+            }
+        }
+
+        //----------------------------------------------------------------
+        // Exception Handling --------------------------------------------
+        public RpcException HandleCustomException (CustomException exception)
+        {
+            if(exception.Type == "InvalidInputData")
+            {
+                return new RpcException(new Status(StatusCode.InvalidArgument, exception.Message));
+            }
+            else
+            {
+                return new RpcException(new Status(StatusCode.Unknown, "Erro interno desconhecido."));
             }
         }
 

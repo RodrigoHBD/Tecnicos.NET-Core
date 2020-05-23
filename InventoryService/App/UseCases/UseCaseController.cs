@@ -9,13 +9,13 @@ namespace InventoryService.App.UseCases
 {
     public class UseCaseController
     {
-        public static async Task AddProductToUserInventory(INewProductRequest request)
+        public static async Task AddServiceToUserInventory(INewServiceRequest request)
         {
 			try
 			{
-				var product = ProductFactory.MakeProduct(request);
-				await RegisterProduct.Execute(product);
-				return;
+				var service = CreateNewService.Execute(request);
+				await ValidateNewService.Execute(service);
+				await RegisterService.Execute(service);
 			}
 			catch (Exception e)
 			{

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "InventoryService.gRPC.Server.Protos";
+
+service Inventory {
+	rpc AddService (GrpcNewServiceRequest) returns (GrpcStatusResponse);
+}
+
+message GrpcStatusResponse {
+	bool ok = 1;
+	string message = 2;
+}
+
+message GrpcNewProductRequest {
+	string seller = 1;
+	string name = 2;
+	string description = 3;
+	float price = 4;
+	repeated string picturesUris = 5;
+}
+
+message GrpcNewServiceRequest {
+	GrpcNewProductRequest productData = 1;
+	int32 warrantyInDays = 2;
+}

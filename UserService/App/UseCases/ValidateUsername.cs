@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UserService.App.Boundries;
+using UserService.App.CustomExceptions;
 
 namespace UserService.App.UseCases
 {
@@ -16,7 +17,7 @@ namespace UserService.App.UseCases
 
                 if (!userExist)
                 {
-                    throw new Exception($"Username '{user}' does not exist");
+                    throw new ValidationException("Username", "Esse nome de usuario nao existe");
                 }
                 else
                 {

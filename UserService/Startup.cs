@@ -29,7 +29,7 @@ namespace UserService
             }
 
             app.UseRouting();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<UserServiceImplementation>();

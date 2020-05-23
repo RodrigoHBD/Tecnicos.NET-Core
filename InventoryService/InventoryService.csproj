@@ -7,18 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="gRPC\Server\Protos\service.proto" GrpcServices="Server" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <Folder Include="App\Models\Inventory\" />
-    <Folder Include="App\Controllers\" />
+    <Folder Include="gRPC\Client\" />
   </ItemGroup>
 
 </Project>

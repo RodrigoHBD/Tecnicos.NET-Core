@@ -53,5 +53,19 @@ namespace UserService.App.Controllers
 				throw e;
 			}
 		}
+
+		public static async Task<GrpcBooleanResponse> ValidateUsernameBool(GrpcValidateUsernameRequest grpcRequest)
+		{
+			try
+			{
+				var user = ValidateUserBoolRequestAdapter.Adapt(grpcRequest);
+				var isValid = await UseCaseController.ValidateUsernameBoolean(user);
+				return Presenter.BooleanResponse(isValid);
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+		}
 	}
 }

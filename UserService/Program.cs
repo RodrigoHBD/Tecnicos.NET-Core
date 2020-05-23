@@ -35,7 +35,7 @@ namespace UserService
                 {
                     webBuilder.ConfigureKestrel(options =>
                     {
-                        options.Listen(IPAddress.Any, 5001, listenOptions =>
+                        options.Listen(IPAddress.Any, 5000, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http2;
                         });

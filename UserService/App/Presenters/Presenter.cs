@@ -15,5 +15,13 @@ namespace UserService.App.Presenters
                 Ok = true
             };
         }
+
+        public static GrpcBooleanResponse BooleanResponse(bool boolean)
+        {
+            return new GrpcBooleanResponse()
+            {
+                Boolean = boolean
+            };
+        }
     }
 }

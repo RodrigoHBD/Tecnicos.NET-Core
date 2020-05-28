@@ -16,7 +16,7 @@ namespace InventoryService.App.TypeAdapters
                 Seller = request.ProductData.Seller,
                 Name = request.ProductData.Name,
                 Description = request.ProductData.Description,
-                Price = request.ProductData.Price,
+                Price = (decimal) request.ProductData.Price,
                 PicturesUris = request.ProductData.PicturesUris.ToList(),
                 WarrantyInDays = request.WarrantyInDays
             };
@@ -33,7 +33,7 @@ namespace InventoryService.App.TypeAdapters
 
         public string Description { get; set; }
 
-        public float Price { get; set; }
+        public decimal Price { get; set; }
 
         public List<string> PicturesUris { get; set; }
     }

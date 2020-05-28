@@ -16,7 +16,7 @@ namespace InventoryService.App.Models
 
         public string Description { get; set; }
 
-        public float Price { get; set; }
+        public decimal Price { get; set; }
 
         public List<string> PicturesUris { get; set; }
     }

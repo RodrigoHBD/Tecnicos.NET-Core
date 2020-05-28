@@ -13,7 +13,7 @@ namespace InventoryService.App.UseCases
         {
             try
             {
-                await DAO.RegisterService(service);
+                await ServiceDAO.RegisterService(service);
             }
             catch (Exception e)
             {

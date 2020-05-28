@@ -23,7 +23,7 @@ namespace InventoryService.App.Initializer
         {
             try
             {
-                await DB.Connect();
+                await DatabaseInitializer.Initialize();
             }
             catch (Exception e)
             {

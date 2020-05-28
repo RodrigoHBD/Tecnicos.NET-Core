@@ -8,29 +8,28 @@ using InventoryService.App.Boundries.SCI.User;
 
 namespace InventoryService.gRPC.Client.Services
 {
-    public class UserService 
+    public class UserService
     {
-		private string Uri { get; } = "0.0.0.0:5000";
-		private User.UserClient Client { get; set; }
+        private string Uri { get; } = "http://localhost:5000";
+        private User.UserClient Client { get; set; }
 
-		public UserService()
-		{
-			var channel = GrpcChannel.ForAddress(Uri);
-			Client =  new User.UserClient(channel);
-		}
-
-        public async Task<bool> ValidateUserBoolean(string user)
+        public UserService()
         {
-			try
-			{
-				var request = GrpcValidateUsernameRequestFactory.MakeRequest(user);
-				var response = await Client.ValidateUsernameBoolAsync(request);
-				return GrpcValidateUsernameBoolAdapter.Adapt(response);
-			}
-			catch (Exception e)
-			{
-				throw e;
-			}
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+            var channel = GrpcChannel.ForAddress(Uri);
+            Client = new User.UserClient(channel);
+        }
+
+        public async Task<GrpcBooleanResponse> ValidateUserBoolean(GrpcValidateUsernameRequest request)
+        {
+            try
+            {
+                return await Client.ValidateUsernameBoolAsync(request);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -18,11 +18,18 @@ namespace InventoryService
             }
         }
 
-        public Collections()
+        public static async Task Initialize()
         {
-            Services = Connection.GetCollection<Service>("Services");
+            try
+            {
+                Services = Connection.GetCollection<Service>("Services");
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
-        public IMongoCollection<Service> Services { get; set; }
+        public static IMongoCollection<Service> Services { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace InventoryService.App.Entities.ProductDataFields
 {
     public class ProductPrice
     {
-        public static void Validate(float price)
+        public static void Validate(decimal price)
         {
             try
             {

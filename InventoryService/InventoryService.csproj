@@ -23,7 +23,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Folder Include="App\Models\Input\GetItem\" />
     <Folder Include="App\Models\Inventory\" />
+    <Folder Include="App\TypeAdapters\GetProductRequest\" />
   </ItemGroup>
 
 </Project>

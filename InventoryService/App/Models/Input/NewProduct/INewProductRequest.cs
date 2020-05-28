@@ -10,7 +10,7 @@ namespace InventoryService.App.Models.Input
         string Seller { get; }
         string Name { get; }
         string Description { get; }
-        float Price { get; }
+        decimal Price { get; }
         List<string> PicturesUris { get; }
     }
 }

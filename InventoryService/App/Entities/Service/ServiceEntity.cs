@@ -1,4 +1,6 @@
-﻿using InventoryService.App.Entities.ProductTypes.ServiceDataFields;
+﻿using InventoryService.App.Boundries;
+using InventoryService.App.CustomExceptions;
+using InventoryService.App.Entities.ProductTypes.ServiceDataFields;
 using InventoryService.App.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,23 @@ namespace InventoryService.App.Entities.ProductTypes
             {
                 ServiceWarranty.Validate(service.WarrantyInDays);
                 return;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task ValdiateId(string id = "")
+        {
+            try
+            {
+                var servceExist = await ServiceDAO.CheckIfServiceExist(id);
+
+                if (!servceExist)
+                {
+                    throw new ValidationException("Id do servico", $"Nenhum servico registrado com a Id '{id}' ");
+                }
             }
             catch (Exception e)
             {

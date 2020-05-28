@@ -24,5 +24,20 @@ namespace InventoryService.App.Controllers
                 throw e;
             }
         }
+
+        public static async Task<GrpcServiceList> SearchService(GrpcServiceSearchRequest grpcRequest)
+        {
+            try
+            {
+                var request = ServiceSearchRequestAdapter.Adapt(grpcRequest);
+                var response = await UseCaseController.SearchServicesWithFilters(request);
+                return Presenter.PresentServiceList(response);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

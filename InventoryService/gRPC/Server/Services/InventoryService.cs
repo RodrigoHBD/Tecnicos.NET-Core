@@ -27,6 +27,22 @@ namespace InventoryService.gRPC.Server.Services
             }
         }
 
+        public override async Task<GrpcServiceList> SearchService(GrpcServiceSearchRequest request, ServerCallContext call)
+        {
+            try
+            {
+               return await Controller.SearchService(request);
+            }
+            catch (CustomException customException)
+            {
+                throw HandleCustomException(customException);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
 
         //----------------------------------------------------------------
         // Exception Handling --------------------------------------------

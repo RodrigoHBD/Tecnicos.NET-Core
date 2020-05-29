@@ -23,6 +23,7 @@ namespace InventoryService
             try
             {
                 Services = Connection.GetCollection<Service>("Services");
+                Items = Connection.GetCollection<Item>("Items");
             }
             catch(Exception e)
             {
@@ -31,5 +32,6 @@ namespace InventoryService
         }
 
         public static IMongoCollection<Service> Services { get; set; }
+        public static IMongoCollection<Item> Items { get; set; }
     }
 }

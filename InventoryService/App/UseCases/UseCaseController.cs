@@ -1,5 +1,4 @@
 ﻿using InventoryService.App.Factories;
-using InventoryService.App.Builders;
 using InventoryService.App.Models.Input;
 using System;
 using System.Collections.Generic;
@@ -14,6 +13,7 @@ namespace InventoryService.App.UseCases
 {
     public class UseCaseController
     {
+		// creation
         public static async Task AddServiceToUserInventory(INewServiceRequest request)
         {
 			try
@@ -28,11 +28,13 @@ namespace InventoryService.App.UseCases
 			}
         }
 
-		public static async Task AddItemToInvetory()
+		public static async Task AddItemToInvetory(INewItemRequest request)
 		{
 			try
 			{
-
+				var item = CreateNewItem.Execute(request);
+				await ItemEntity.ValidateNewItem(item);
+				await RegisterItem.Execute(item);
 			}
 			catch (Exception e)
 			{
@@ -40,6 +42,7 @@ namespace InventoryService.App.UseCases
 			}
 		}
 
+		// get from user
 		public static async Task<IServiceList> GetUserServicesWithPagination(IGetProductRequest request)
 		{
 			try
@@ -53,7 +56,7 @@ namespace InventoryService.App.UseCases
 			}
 		}
 
-		// Get by Id section
+		// Get by Id
 		public static async Task<Service> GetServiceDataById(string id)
 		{
 			try
@@ -68,7 +71,6 @@ namespace InventoryService.App.UseCases
 		}
 
 		// Search with filters section
-
 		public static async Task<IServiceList> SearchServicesWithFilters(IServiceSearchRequest request)
 		{
 			try

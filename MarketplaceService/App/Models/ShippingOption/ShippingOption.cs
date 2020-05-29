@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InventoryService.App.Models
+namespace MarketplaceService.App.Models
 {
-    public class ServiceSearch : ProductSearch
+    public class ShippingOption
     {
+        public string Name { get; set; }
     }
 }

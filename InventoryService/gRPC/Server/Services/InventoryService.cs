@@ -43,6 +43,22 @@ namespace InventoryService.gRPC.Server.Services
             }
         }
 
+        public override async Task<Service> GetService(GrpcGetServiceByIdRequest request, ServerCallContext call)
+        {
+            try
+            {
+                return await Controller.GetService(request);
+            }
+            catch (CustomException customException)
+            {
+                throw HandleCustomException(customException);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
 
         //----------------------------------------------------------------
         // Exception Handling --------------------------------------------

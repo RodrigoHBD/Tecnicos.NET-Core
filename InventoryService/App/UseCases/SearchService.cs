@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using InventoryService.App.Models.Input;
 using InventoryService.App.Models.Output;
-using InventoryService.App.Builders;
 using InventoryService.App.Boundries;
 
 namespace InventoryService.App.UseCases

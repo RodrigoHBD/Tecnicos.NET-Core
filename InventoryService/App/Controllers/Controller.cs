@@ -39,5 +39,18 @@ namespace InventoryService.App.Controllers
             }
         }
 
+        public static async Task<Service> GetService(GrpcGetServiceByIdRequest grpcRequest)
+        {
+            try
+            {
+                var service = await UseCaseController.GetServiceDataById(grpcRequest.Id);
+                return Presenter.PresentService(service);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

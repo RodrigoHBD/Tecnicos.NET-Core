@@ -5,7 +5,7 @@ option csharp_namespace = "InventoryService.gRPC.Server.Protos";
 service Inventory {
 	rpc AddService (GrpcNewServiceRequest) returns (GrpcStatusResponse);
 	rpc SearchService (GrpcServiceSearchRequest) returns (GrpcServiceList);
-	rpc GetService (GrpcServiceSearchRequest) returns (Service);
+	rpc GetService (GrpcGetServiceByIdRequest) returns (Service);
 }
 
 // responses --------------------------------------------------
@@ -56,6 +56,10 @@ message GrpcServiceSearchRequest {
 	GrpcProductSearchRequest productData = 1;
 }
 
+// get by id
+message GrpcGetServiceByIdRequest {
+	string id = 1;
+}
 
 // models ---------------------------------------
 

@@ -67,7 +67,7 @@ namespace InventoryService.App.Boundries
             try
             {
                 var filter = Builders<Service>.Filter.Eq("Seller", user);
-                var query = await Collections.Services.FindAsync(filter);
+                var query = Collections.Services.Find(filter).Limit(pagination.Limit).Skip(pagination.Offset);
                 var total = await Collections.Services.CountDocumentsAsync(filter);
 
                 return new ServiceList()

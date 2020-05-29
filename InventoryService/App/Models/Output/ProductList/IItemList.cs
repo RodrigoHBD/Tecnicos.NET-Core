@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using InventoryService.App.Models;
 
 namespace InventoryService.App.Models.Output
 {
-    public interface IServiceSearchResult
+    public interface IItemList
     {
+        List<Item> Items { get; }
         Pagination Pagination { get; }
-        List<Service> Results { get; }
     }
 }

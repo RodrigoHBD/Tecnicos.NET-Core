@@ -24,6 +24,11 @@ namespace InventoryService.App.Presenters
             var grpcServiceList = new GrpcServiceList()
             {
                 Pagination = new SearchPagination()
+                {
+                    Offset = list.Pagination.Offset,
+                    Limit = list.Pagination.Limit,
+                    Total = list.Pagination.Total
+                }
             };
 
             list.Services.ForEach((service) =>
@@ -40,5 +45,21 @@ namespace InventoryService.App.Presenters
             });
             return grpcServiceList;
         }
+
+        public static Service PresentService(App.Models.Service service)
+        {
+            var _service = new Service()
+            {
+                Id = service.Id.ToString(),
+                Name = service.Name,
+                Description = service.Description,
+                Price = (double) service.Price,
+                Seller = service.Seller,
+                WarrantyInDays = service.WarrantyInDays
+            };
+            service.PicturesUris.ForEach(pic => _service.Pictures.Add(pic));
+            return _service;
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace MarketplaceService.App.Models
         public ObjectId Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Owner { get; set; }
         public decimal Price { get; set; }
         public List<Discount> Discounts { get; set; }
         public string ProductId { get; set; }
